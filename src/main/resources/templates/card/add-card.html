@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Add Card</title>
+    <link rel="stylesheet" href="/css/add-card-style.css">
+</head>
+<body>
+<section class="container">
+    <header>Add card form</header>
+    <form class="form" th:action="@{/card/add-card/{userId}(userId=${userId})}" method="post">
+
+        <div class="input-box">
+            <label>Card Number</label>
+            <input type="hidden" name="ownerId" th:value="${userId}">
+            <input type="text" name="cardNumber" placeholder="Enter card number" required />
+        </div>
+
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter card password" required />
+        </div>
+
+        <div class="input-box">
+            <label>Balance</label>
+            <input type="number" name="balance" placeholder="Enter card balance" required />
+        </div>
+
+        <div class="input-box">
+            <label>Card type</label>
+            <input type="text" name="cardType" placeholder="Select a card type" list="categories">
+            <datalist id="categories">
+                <option value="UZCARD">
+                <option value="HUMO">
+                <option value="VISA">
+            </datalist>
+        </div>
+
+        <button>Submit</button>
+    </form>
+</section>
+</body>
+</html>

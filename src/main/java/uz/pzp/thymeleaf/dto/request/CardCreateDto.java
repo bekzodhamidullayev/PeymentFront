@@ -1,0 +1,21 @@
+package uz.pzp.thymeleaf.dto.request;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+import java.util.UUID;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class CardCreateDto {
+
+    private UUID ownerId;
+    private String cardNumber;
+    private String password;
+    private Double balance;
+    private String cardType;
+}

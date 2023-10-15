@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page With Light/Dark Mode</title>
+  <link rel="stylesheet" href="/css/menuStyle.css"/>
+  <link rel="stylesheet" href="/css/transaction-style.css"/>
+</head>
+<body>
+<main>
+  <div class="big-wrapper light">
+    <img th:src="@{/img/shape.png}" alt="" class="shape" />
+
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img th:src="@{/img/logo.png}" alt="Logo" />
+          <h1 style="color: #ff7d00">SHAFTOLI</h1>
+        </div>
+
+        <div class="links">
+          <ul>
+            <li><a th:href="@{/card/manage-cards/{userId}(userId=${userId})}"><h3>MANAGE CARDS</h3></a></li>
+            <li><a th:href="@{/transaction/histiry/{userId}(userId=${userId})}"><h3>HISTORY</h3></a></li>
+            <li><a th:href="@{/transaction/p2p/{userId}(userId=${userId})}"><h3>P2P</h3></a></li>
+          </ul>
+        </div>
+
+        <div class="overlay"></div>
+
+        <div class="hamburger-menu">
+          <div class="bar"></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="showcase-area">
+
+      <section class="container2">
+        <h1 class="header2" style="font-family: 'Arial Rounded MT Bold'">TRANSACTION</h1>
+<!--        <p style="color: firebrick">${message}</p>-->
+        <form th:action="@{/transaction/peyment/{userId}(userId=${userId})}" method="post" class="form">
+
+          <div class="input-box">
+            <label>Card number</label>
+            <input type="text" name="receiverCardNum" placeholder="Enter receiver card number" required />
+          </div>
+
+          <div class="input-box">
+            <label>Your card</label>
+            <input type="text" name="senderCardNum" placeholder="Select a card type">
+          </div>
+          <div class="input-box">
+            <label>Summa</label>
+            <input type="number" name="amount" placeholder="Enter amount" required />
+          </div>
+
+          <button>Submit</button>
+        </form>
+      </section>
+
+    </div>
+
+    <div class="bottom-area">
+      <div class="container">
+        <button class="toggle-btn">
+          <i class="far fa-moon"></i>
+          <i class="far fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- JavaScript Files -->
+
+<script th:src="@{https://kit.fontawesome.com/a81368914c.js}"></script>
+<script th:src="@{/js/app2.js}"></script>
+</body>
+</html>

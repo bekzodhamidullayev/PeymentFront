@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P 2 P</title>
+    <link rel="stylesheet" href="/css/menuStyle.css" />
+    <link rel="stylesheet" href="/css/p2p-style.css" />
+</head>
+<body>
+<main>
+    <div class="big-wrapper light">
+        <img th:src="@{/img/shape.png}" alt="" class="shape" />
+
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <img th:src="@{/img/logo.png}"  alt="Logo" />
+                    <h1 style="color: #ff7d00">SHAFTOLI</h1>
+                </div>
+
+                <div class="links">
+                    <ul>
+                        <li><a th:href="@{/card/manage-cards/{userId}(userId=${userId})}"><h3>MANAGE CARDS</h3></a></li>
+                        <li><a th:href="@{/transaction/peyment/{userId}(userId=${userId})}"><h3>PAYMENT</h3></a></li>
+                        <li><a th:href="@{/transaction/history/{userId}(userId=${userId})}"><h3>HISTORY</h3></a></li>
+                    </ul>
+                </div>
+
+                <div class="overlay"></div>
+
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="showcase-area">
+            <div class="container">
+
+                <div class="p2p-case">
+                    <section class="container3">
+                        <h1 class="header3" style="font-family: 'Arial Rounded MT Bold'">P 2 P</h1>
+                        <form action="#" class="form">
+                            <div class="column">
+                                <div class="input-box">
+                                    <label>First time</label>
+                                    <input type="date" required />
+                                </div>
+                                <div class="input-box">
+                                    <label>Last time</label>
+                                    <input type="date" required />
+                                </div>
+                            </div>
+                            <button>Submit</button>
+                        </form>
+                    </section>
+                </div>
+
+                <div class="table-showcase">
+                    <table class="content-table">
+                        <thead>
+                        <tr>
+                            <th>SENDER</th>
+                            <th>RECEIVER</th>
+                            <th>AMOUNT</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+<!--                        <%&#45;&#45;              <tr class="active-row">&#45;&#45;%>-->
+<!--                            <%&#45;&#45;                <td>Sally</td>&#45;&#45;%>-->
+<!--                            <%&#45;&#45;                <td>72,400</td>&#45;&#45;%>-->
+<!--                            <%&#45;&#45;                <td></td>&#45;&#45;%>-->
+<!--                            <%&#45;&#45;              </tr>&#45;&#45;%>-->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-area">
+            <div class="container">
+                <button class="toggle-btn">
+                    <i class="far fa-moon"></i>
+                    <i class="far fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- JavaScript Files -->
+
+<script th:src="@{https://kit.fontawesome.com/a81368914c.js}"></script>
+<script th:src="@{/js/app2.js}"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manager Cards</title>
+    <link rel="stylesheet" th:href="@{/css/menuStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/swiper-bundle.min.css}">
+    <link rel="stylesheet" th:href="@{/css/card-list-style.css}">
+
+</head>
+<body>
+
+<main>
+    <div class="big-wrapper light">
+        <img th:src="@{/img/shape.png}" alt="" class="shape" />
+
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <img th:src="@{/img/logo.png}" alt="Logo" />
+                    <h1 style="color: #ff7d00">SHAFTOLI</h1>
+                </div>
+
+                <div class="links">
+                    <ul>
+                        <li><a th:href="@{/transaction/peyment/{userId}(userId=${userId})}"><h3>PAYMENT</h3></a></li>
+                        <li><a th:href="@{/transaction/history/{userId}(userId=${userId})}"><h3>HISTORY</h3></a></li>
+                        <li><a th:href="@{/transaction/p2p/{userId}(userId=${userId})}"><h3>P2P</h3></a></li>
+                    </ul>
+                </div>
+
+                <div class="overlay"></div>
+
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </header>
+
+        <div style="text-align: center">
+            <div style="border: 5px solid #ff7d00;
+                      border-radius: 10px;
+                      width: 50%;
+                      padding: 30px 10px;
+                      margin-left: 25%;
+                      text-align: center;
+                      ">
+                <h3 style="color: #ff7d00">Balance</h3>
+                <h2 style="color: #ff7d00"><td th:text="${cardsBalance}"></td></h2>
+            </div>
+        </div>
+
+
+
+
+<!--        card list-->
+        <div class="slide-container swiper">
+            <div class="slide-content">
+                <div class="card-wrapper swiper-wrapper">
+                    <!-- Listdagi har bir kartochka uchun -->
+                    <tr th:each="card: ${cardEntities}" >
+                       <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <img th:src="@{/img/{cardType}.jpg(cardType=${card.type})}" alt="" class="card-img"/>
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name" th:text="${card.type}"></h2>
+                            <p class="description" th:text="'Balance ' + ${card.balance} + ' so\'m'"></p>
+                            <p>
+                                <div class="d-flex">
+                                    <a th:href="@{'/card/update-card-balance/' + ${userId} + '/' + ${card.cardNumber}}"><button class="btn btn-outline-success" >update</button></a>
+                                    <a th:href="@{'/card/delete-by-card-number/' + ${userId} + '/' + ${card.cardNumber}}"><button class="btn btn-outline-success" >delete</button></a>
+                                </div>
+
+                            </p>
+                        </div>
+                       </div>
+
+                    <tr/>
+
+                    <!-- Yangi kartochka qo'shish uchun blok -->
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <img th:src="@{/img/newCard.jpg}" alt="" class="card-img">
+                            </div>
+                        </div>
+                         <div class="card-content">
+                             <a th:href="@{/card/add-card/{userId}(userId=${userId})}">
+                                 <button class="button">Add Card</button></a>
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="bottom-area">
+            <div class="container">
+                <button class="toggle-btn">
+                    <i class="far fa-moon"></i>
+                    <i class="far fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Swiper JS -->
+<script th:src="@{/js/swiper-bundle.min.js}"></script>
+
+<!-- JavaScript -->
+<script th:src="@{/js/script.js}"></script>
+
+<script th:src="@{https://kit.fontawesome.com/a81368914c.js}"></script>
+<script th:src="@{/js/app2.js}"></script>
+</body>
+</html>
