@@ -42,7 +42,6 @@ public class TransactionService {
                 new ParameterizedTypeReference<List<TransactionResponseDto>>() {},
                 ownerId
         );
-        System.out.println(responseEntity.getBody());
         return responseEntity.getBody();
     }
 }
